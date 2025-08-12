@@ -1,4 +1,4 @@
-# React Calendar Analytics
+<img width="1178" height="653" alt="Screenshot from 2025-08-12 18-25-39" src="https://github.com/user-attachments/assets/150d8743-7d6d-42b7-b986-d9fc8cd188c2" /># React Calendar Analytics
 
 A React application that displays user data in a calendar view with interactive bar charts. Built with React, TypeScript, Redux Toolkit, React Big Calendar, and Recharts.
 
@@ -89,3 +89,12 @@ The application expects data in the following format:
 - `npm run build` - Build for production
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint
+
+
+
+## Screenshot
+
+<img width="1178" height="653" alt="Screenshot from 2025-08-12 18-25-39" src="https://github.com/user-attachments/assets/ca3b87cd-15bb-4d5d-be5a-e52b5a22cc63" />
+<img width="1159" height="715" alt="Screenshot from 2025-08-12 18-25-50" src="https://github.com/user-attachments/assets/1e09b037-1466-4573-89b7-19d2faf6b3a4" />
+
+
