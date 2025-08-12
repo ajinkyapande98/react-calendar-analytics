@@ -31,13 +31,66 @@
   color: #333;
 }
 
-.no-data {
+.modal-content {
+  position: relative;
   padding: 1rem;
+  background: white;  /* Ensure modal content has solid background */
+  min-height: 200px;
+  width: 100%;
+}
+
+/* React Modal Overrides */
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.ReactModal__Overlay--after-open {
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close {
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  background: white !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+.close-button {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #6c63c5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  padding: 0;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background: #5449b8;
+}
+
+.no-data {
+  padding: 2rem;
   background: #fff3f3;
   color: #d32f2f;
-  border-radius: 4px;
-  margin-top: 1rem;
+  border-radius: 8px;
+  margin: 1rem 0;
   font-weight: 500;
+  text-align: center;
 }
 
 /* React Big Calendar customization */
