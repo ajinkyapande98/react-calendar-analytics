@@ -1,4 +1,4 @@
-<img width="1178" height="653" alt="Screenshot from 2025-08-12 18-25-39" src="https://github.com/user-attachments/assets/150d8743-7d6d-42b7-b986-d9fc8cd188c2" /># React Calendar Analytics
+# React Calendar Analytics
 
 A React application that displays user data in a calendar view with interactive bar charts. Built with React, TypeScript, Redux Toolkit, React Big Calendar, and Recharts.
 
