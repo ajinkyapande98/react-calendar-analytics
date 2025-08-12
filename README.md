@@ -20,7 +20,7 @@ A React application that displays user data in a calendar view with interactive 
 
 1. Clone the repository:
    ```bash
-   git clone [your-repository-url]
+   git clone git@github.com:ajinkyapande98/react-calendar-analytics.git
    ```
 
 2. Navigate to the project directory:

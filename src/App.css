@@ -1,3 +1,17 @@
+:root {
+  --primary: #4a90e2;
+  --primary-light: #64a6f3;
+  --primary-dark: #357abd;
+  --secondary: #2d3142;
+  --accent: #00c6ae;
+  --error: #e74c3c;
+  --success: #2ecc71;
+  --background: #f8fafc;
+  --text: #2d3142;
+  --text-light: #6b7280;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -8,14 +22,23 @@
 .app {
   width: 100%;
   text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
 }
 
 .calendar-container {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 1rem;
+  padding: 1.5rem;
   position: relative;
+  background: white;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.calendar-container:hover {
+  transform: translateY(-2px);
 }
 
 .chart-popup {
@@ -33,17 +56,18 @@
 
 .modal-content {
   position: relative;
-  padding: 1rem;
-  background: white;  /* Ensure modal content has solid background */
+  padding: 2rem;
+  background: white;
   min-height: 200px;
   width: 100%;
+  animation: slideIn 0.3s ease-out;
 }
 
 /* React Modal Overrides */
 .ReactModal__Overlay {
   opacity: 0;
-  transition: opacity 200ms ease-in-out;
-  background-color: rgba(0, 0, 0, 0.5) !important;
+  transition: all 0.3s ease-in-out;
+  backdrop-filter: blur(5px);
 }
 
 .ReactModal__Overlay--after-open {
@@ -57,81 +81,241 @@
 .ReactModal__Content {
   background: white !important;
   border: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: var(--shadow) !important;
+  border-radius: 12px !important;
+  transform: scale(0.95);
+  transition: transform 0.3s ease !important;
+}
+
+.ReactModal__Content--after-open {
+  transform: scale(1);
 }
 
 .close-button {
   position: absolute;
-  top: -20px;
-  right: 10px;
-  width: 30px;
-  height: 30px;
+  top: -15px;
+  right: -15px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
-  background: #6c63c5;
+  background: var(--primary);
   color: white;
-  border: none;
+  border: 2px solid white;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 20px;
   padding: 0;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .close-button:hover {
-  background: #5449b8;
+  background: var(--primary-dark);
+  transform: scale(1.1);
 }
 
 .no-data {
   padding: 2rem;
-  background: #fff3f3;
-  color: #d32f2f;
+  background: #fff5f5;
+  color: var(--error);
   border-radius: 8px;
   margin: 1rem 0;
   font-weight: 500;
   text-align: center;
+  border: 1px solid rgba(231, 76, 60, 0.2);
+  animation: shake 0.5s ease-in-out;
 }
 
 /* React Big Calendar customization */
 .rbc-calendar {
   background: white;
   padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
 }
 
 .rbc-event {
-  background-color: #8884d8 !important;
+  background-color: var(--primary) !important;
   border: none !important;
-  padding: 2px 5px !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  transition: transform 0.2s ease !important;
+}
+
+.rbc-event:hover {
+  transform: scale(1.02);
 }
 
 .rbc-event.rbc-selected {
-  background-color: #6c63c5 !important;
+  background-color: var(--primary-dark) !important;
 }
 
 .rbc-today {
-  background-color: #f0f0ff !important;
+  background-color: #e8f4ff !important;
 }
 
 .rbc-header {
-  padding: 10px !important;
+  padding: 12px !important;
   font-weight: 600 !important;
+  color: var(--text) !important;
+  border-bottom: 2px solid #edf2f7 !important;
 }
 
 .rbc-button-link {
-  color: #333 !important;
+  color: var(--text) !important;
+  transition: color 0.2s ease;
+}
+
+.rbc-button-link:hover {
+  color: var(--primary) !important;
+}
+
+.rbc-off-range-bg {
+  background-color: #f8fafc !important;
+}
+
+/* Enhanced Calendar Cell Styles */
+.rbc-day-bg {
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.rbc-day-bg:hover {
+  background-color: var(--primary-light) !important;
+  opacity: 0.1;
+}
+
+.rbc-date-cell {
+  padding: 8px !important;
+  font-weight: 500;
+}
+
+.rbc-month-row {
+  overflow: visible !important;
+}
+
+.rbc-row-segment {
+  padding: 2px 4px !important;
+}
+
+.rbc-show-more {
+  background-color: var(--primary-light) !important;
+  color: var(--primary-dark) !important;
+  border-radius: 4px;
+  padding: 2px 8px !important;
+  font-size: 0.875rem !important;
+  transition: all 0.2s ease;
+}
+
+.rbc-show-more:hover {
+  background-color: var(--primary) !important;
+  color: white !important;
+}
+
+/* Calendar Navigation Buttons */
+.rbc-btn-group button {
+  background: white !important;
+  color: var(--text) !important;
+  border: 1px solid #e2e8f0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.rbc-btn-group button:hover {
+  background: var(--primary-light) !important;
+  color: white !important;
+  border-color: var(--primary-light) !important;
+}
+
+.rbc-active {
+  background: var(--primary) !important;
+  color: white !important;
+  border-color: var(--primary) !important;
 }
 
 /* Recharts customization */
 .recharts-cartesian-grid-horizontal line,
 .recharts-cartesian-grid-vertical line {
-  stroke: #e0e0e0;
+  stroke: #e2e8f0;
 }
 
 .recharts-tooltip-wrapper {
   background: white !important;
-  border-radius: 4px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 8px !important;
+  box-shadow: var(--shadow) !important;
+  border: 1px solid #e2e8f0 !important;
+  transition: transform 0.2s ease !important;
+}
+
+.recharts-tooltip-wrapper:hover {
+  transform: scale(1.02);
+}
+
+/* Chart Styles */
+.chart-wrapper {
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.custom-tooltip {
+  background: var(--secondary);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  border: none;
+}
+
+.tooltip-label {
+  color: #a5b4fc;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.tooltip-value {
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
